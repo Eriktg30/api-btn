@@ -12,8 +12,8 @@ import autoridadesRoutes from './routes/autoridades.routes.js'
 const app = express()
 
 app.use(cors({
-    origin: 'http://localhost:8100',
-    // origin: 'https://localhost',
+    // origin: 'http://localhost:8100',
+    origin: 'https://localhost',
     credentials: true,
 }))
 
