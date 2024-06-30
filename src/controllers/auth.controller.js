@@ -83,6 +83,7 @@ export const login = async (req, res) => {
             createdAt: userFound.createdAt,
             updatedAt: userFound.updatedAt,
             msg: 'Bienvenido',
+            authToken: token
         })
 
     } catch (error) {
