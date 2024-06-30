@@ -1,0 +1,22 @@
+import { Router } from "express";
+import { register, login, profile, logout, verifyToken, loginAutoridades } from "../controllers/auth.controller.js";
+import { authRequired } from "../middlewares/validateToken.js";
+import { validateSchema } from "../middlewares/validator.middleware.js";
+
+const router = Router()
+
+router.post('/register', register)
+
+router.post('/login', login)
+
+router.post('/loginAutoridades', loginAutoridades)
+
+router.post('/logout', logout)
+
+router.post('/verify', verifyToken)
+
+router.post('/profile/:id', profile)
+
+
+
+export default router;
