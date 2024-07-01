@@ -120,7 +120,7 @@ export const logout = (req, res) => {
 }
 
 export const verifyToken = async (req, res) => {
-    const { token } = req.cookies
+    const token = req.headers.authorization.split(' ')[1];
 
     if (!token) return res.status(401).json({ message: 'no autorizado' })
 
