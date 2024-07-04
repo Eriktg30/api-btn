@@ -176,6 +176,26 @@ export const loginAutoridades = async (req, res) => {
     }
 }
 
+export const verifyTokenA = async (req, res) => {
+    const token = req.headers.authorization.split(' ')[1];
+
+    if (!token) return res.status(401).json({ message: 'no autorizado' })
+
+    jwt.verify(token, TOKEN_SECRET, async (err, user) => {
+        if (err) return res.status(401).json({ message: 'no autorizado' })
+
+        const userFound = await User.findById(user.id)
+        if (!userFound) return res.status(401).json({ message: 'no encontrado' })
+
+        return res.json({
+            id: userFound._id,
+            username: userFound.username,
+            email: userFound.email,
+            msg: 'Bienvenido'
+        })
+    })
+}
+
 
 
 
