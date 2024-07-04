@@ -168,6 +168,7 @@ export const loginAutoridades = async (req, res) => {
             email: userFound.CorreoPo,
             createdAt: userFound.createdAt,
             updatedAt: userFound.updatedAt,
+            msg: 'Bienvenido',
             authToken: token
         })
 
