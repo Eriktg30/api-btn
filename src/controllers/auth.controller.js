@@ -46,7 +46,8 @@ export const register = async (req, res) => {
             email: userSaved.email,
             cratedAt: userSaved.cratedAt,
             updatedAt: userSaved.updatedAt,
-            msg: 'Registrado'
+            msg: 'Registrado',
+            authToken: token
         })
 
     } catch (error) {
@@ -154,7 +155,7 @@ export const loginAutoridades = async (req, res) => {
         const token = await createAccessToken({ id: userFound._id })
         // res.cookie('token', token)
 
-        res.cookie("token", token, {
+         res.cookie("token", token, {
             httpOnly: true,
             secure: true,
             sameSite: 'none',
@@ -166,7 +167,8 @@ export const loginAutoridades = async (req, res) => {
             username: userFound.NombresPo,
             email: userFound.CorreoPo,
             createdAt: userFound.createdAt,
-            updatedAt: userFound.updatedAt
+            updatedAt: userFound.updatedAt,
+            authToken: token
         })
 
     } catch (error) {
