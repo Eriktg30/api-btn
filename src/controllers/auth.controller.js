@@ -184,13 +184,13 @@ export const verifyTokenA = async (req, res) => {
     jwt.verify(token, TOKEN_SECRET, async (err, user) => {
         if (err) return res.status(401).json({ message: 'no autorizado' })
 
-        const userFound = await User.findById(user.id)
+        const userFound = await Policia.findById(user.id)
         if (!userFound) return res.status(401).json({ message: 'no encontrado' })
 
         return res.json({
             id: userFound._id,
-            username: userFound.username,
-            email: userFound.email,
+            username: userFound.NombresPo,
+            email: userFound.CorreoPo,
             msg: 'Bienvenido'
         })
     })
