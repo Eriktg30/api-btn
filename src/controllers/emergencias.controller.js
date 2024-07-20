@@ -5,13 +5,15 @@ import Emergencia from "../models/emergencias.model.js";
 
 export const getEmergencias = async (req, res) => {
     try {
+        const policiaid = req.params.id;
         const emergencia = await Emergencia.find({
-        })
+            Policias: policiaid
+        }).populate('Policias')
 
         res.json(emergencia)
 
     } catch (error) {
-        return res.status(500).json({msg: 'Emergencia no encontrada'})
+        return res.status(500).json({msg: 'Emergencia no encontrada l'})
     }
 }
 
