@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const emergenciasSchema = mongoose.Schema({
     ulongitud:{
-        type: String,
+        type: Number,
         required: true,
         trim: true,
     },
     ulatitud:{
-        type: String,
+        type: Number,
         required: true,
         trim: true,
     },
