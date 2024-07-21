@@ -24,6 +24,6 @@ app.use(cookieParser())
 app.use('/api', authRoutes)
 app.use('/api', emergenciasRoutes)
 app.use('/api', autoridadesRoutes)
-
+app.use('/api', notificationRoutes)
 
 export default app;
