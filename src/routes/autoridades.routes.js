@@ -11,4 +11,6 @@ router.get('/emergenciasPP', getPolicias)
 
 router.get('/emergenciasPP/:id', getPolicia)
 
+router.put('/policia/:id', updatePolicia)
+
 export default router
