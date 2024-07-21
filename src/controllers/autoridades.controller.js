@@ -24,3 +24,24 @@ export const getPolicia = async (req, res) => {
         return res.status(500).json({msg: 'Policia no encontrada'})
     }
 }
+
+export const updatePolicia = async (req, res) => {
+    const { notificationToken } = req.body
+
+    try {
+        const policia = await Autoridades.findByIdAndUpdate(req.params.id,
+            { notificationToken },
+            { new: true }
+        )
+
+        if (!policia) 
+            return res.status(404).json({ msg: 'Policia no encontrado' })
+        
+
+        return res.status(200).json({ msg: 'Actualizado', policia })
+
+    } catch (error) {
+        return res.status(500).json({ msg: 'Policia no encontrado' })
+    }
+}
+
