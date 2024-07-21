@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { authRequired } from '../middlewares/validateToken.js'
-import { getPolicia , getPolicias} from "../controllers/autoridades.controller.js";
+import { getPolicia , getPolicias, updatePolicia} from "../controllers/autoridades.controller.js";
 
 const router = Router()
 
