@@ -6,8 +6,7 @@ import cors from 'cors'
 import authRoutes from './routes/auth.routes.js'
 import emergenciasRoutes from './routes/emergencias.routes.js'
 import autoridadesRoutes from './routes/autoridades.routes.js'
-
-
+import notificationRoutes from './routes/notificaciones.routes.js'
 
 const app = express()
 
