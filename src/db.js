@@ -3,7 +3,7 @@ import admin from './admin.js';
 import Emergencia from './models/emergencias.model.js';
 import Policia from './models/autoridades.model.js';
 import dotenv from 'dotenv';
-import { notificaciones } from './notificacion.js'
+import { notificaciones } from './notificaciones.js'
 
 
 dotenv.config();
