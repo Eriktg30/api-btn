@@ -27,7 +27,7 @@ export const notificaciones = () => {
             const payload = {
                 notification: {
                     title: 'Nueva Emergencia Asignada',
-                    body: `Se te ha asignado una nueva emergencia con ID: ${emergenciaId}.`,
+                    body: `Se te ha asignado una nueva emergencia atiendela.`,
                 },
             };
 
