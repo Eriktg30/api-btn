@@ -141,61 +141,7 @@ export const verifyToken = async (req, res) => {
 }
 
 
-export const loginAutoridades = async (req, res) => {
-    const { CorreoPo, PasswordPo } = req.body
 
-    try {
-
-        const userFound = await Policia.findOne({ CorreoPo })
-        if (!userFound) return res.status(400).json({ msg: 'Usuario no encontrado', CorreoPo, PasswordPo })
-
-        const isMatch = await bcrypt.compare(PasswordPo, userFound.PasswordPo)
-        if (!isMatch) return res.status(400).json({ msg: 'Datos incorrectos' })
-
-        const token = await createAccessToken({ id: userFound._id })
-        // res.cookie('token', token)
-
-         res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-            path: '/'
-        });
-
-        res.status(200).json({
-            id: userFound._id,
-            username: userFound.NombresPo,
-            email: userFound.CorreoPo,
-            createdAt: userFound.createdAt,
-            updatedAt: userFound.updatedAt,
-            msg: 'Bienvenido',
-            authToken: token
-        })
-
-    } catch (error) {
-        res.status(500).json({ msg: 'Error login' })
-    }
-}
-
-export const verifyTokenA = async (req, res) => {
-    const token = req.headers.authorization.split(' ')[1];
-
-    if (!token) return res.status(401).json({ message: 'no autorizado' })
-
-    jwt.verify(token, TOKEN_SECRET, async (err, user) => {
-        if (err) return res.status(401).json({ message: 'no autorizado' })
-
-        const userFound = await Policia.findById(user.id)
-        if (!userFound) return res.status(401).json({ message: 'no encontrado' })
-
-        return res.json({
-            id: userFound._id,
-            username: userFound.NombresPo,
-            email: userFound.CorreoPo,
-            msg: 'Bienvenido'
-        })
-    })
-}
 
 
 
