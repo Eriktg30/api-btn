@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema({
         required: true,
         trim: true,
     },
-    Municipio: {
+    municipio: {
         type: String,
         required: true,
         trim: true,
