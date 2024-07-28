@@ -2,6 +2,7 @@ import Autoridades from "../models/autoridades.model.js";
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import { TOKEN_SECRET } from "../config.js";
+import { createAccessToken } from "../libs/jwt.js";
 
 
 export const getPolicias = async (req, res) => {
