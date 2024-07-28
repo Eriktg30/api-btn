@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { authRequired } from '../middlewares/validateToken.js'
-import { getPolicia , getPolicias, updatePolicia, verifyToken, loginAutoridades} from "../controllers/autoridades.controller.js";
+import { getPolicia , getPolicias, updatePolicia, verifyTokenAutoridades, loginAutoridades} from "../controllers/autoridades.controller.js";
 
 const router = Router()
 
@@ -14,7 +14,7 @@ router.get('/emergenciasPP/:id', getPolicia)
 
 router.put('/policia/:id', updatePolicia)
 
-router.get('/verifyPolicia', verifyToken)
+router.get('/verifyPolicia', verifyTokenAutoridades)
 
 
 export default router
