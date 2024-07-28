@@ -4,7 +4,7 @@ import { authRequired } from '../middlewares/validateToken.js'
 
 const router = Router()
 
-router.post('/emergencias/:id', getEmergencias)
+router.get('/emergencias/:id', getEmergencias)
 
 router.post('/emergencia/:id', getEmergencia)
 
