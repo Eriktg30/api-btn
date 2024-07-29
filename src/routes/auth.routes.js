@@ -13,7 +13,7 @@ router.post('/logout', logout)
 
 router.get('/verify', verifyToken)
 
-router.post('/profile/:id', profile)
+router.get('/profile/:id',authRequired, profile)
 
 
 
