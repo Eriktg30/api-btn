@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
         trim: true,
     }, 
     phone: {
-        type: Number,
+        type: String,
         required: true,
         trim: true,
     },
@@ -28,7 +28,7 @@ const userSchema = mongoose.Schema({
         trim: true,
     },
      phoneFamily: {
-        type: Number,
+        type: String,
         trim: true,
     },
 }, {
