@@ -23,6 +23,9 @@ export const register = async (req, res) => {
             email,
             password: passwordHash,
             username,
+            phone, 
+            phoneFamily,
+            municipio
         })
 
         const userSaved = await newUser.save()
