@@ -138,6 +138,9 @@ export const verifyToken = async (req, res) => {
             id: userFound._id,
             username: userFound.username,
             email: userFound.email,
+            phone: userFound.phone, 
+            phoneFamily: userFound.phoneFamily,
+            municipio: userFound.municipio,
             msg: 'Bienvenido'
         })
     })
