@@ -19,14 +19,17 @@ const userSchema = mongoose.Schema({
     }, 
      phoneFamily: {
         type: String,
+        required: true,
         trim: true,
     },
     phone: {
         type: String,
+        required: true,
         trim: true,
     },
     municipio: {
         type: String,
+        required: true,
         trim: true,
     }
 }, {
