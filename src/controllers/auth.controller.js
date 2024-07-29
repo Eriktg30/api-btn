@@ -104,8 +104,11 @@ export const updateProfile = async (req, res) => {
             { new: true }
         )
 
+        if (user)
+            return res.status(400).json({ msg: 'El correo ya existe' })
+        
         if (!user)
-            return res.status(404).json({ msg: 'Emergencia no encontrada' })
+            return res.status(404).json({ msg: 'Usuario no encontrada' })
 
         return res.status(200).json({ msg: 'Actualizado', user })
 
