@@ -101,7 +101,7 @@ export const updateProfile = async (req, res) => {
     try {
         const userFound = await User.findOne({ email });
         if (userFound && userFound._id.toString() !== req.params.id) {
-            return res.status(200).json({ msg: 'El correo ya existe' });
+            return res.status(400).json({ msg: 'El correo ya existe' });
         }
         
         const user = await User.findByIdAndUpdate(req.params.id,
