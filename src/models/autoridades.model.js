@@ -17,6 +17,19 @@ const PoliciasSchema = mongoose.Schema({
         required: true,
         trim: true,
     },
+    notificationToken: {
+        type: String,
+        required: true
+    },
+    ulongitud: {
+        type: String,
+        required: true
+    },
+    ulatitud: {
+        type: String,
+        required: true
+    },
+
 }, {
     timestamps: true,
 })
