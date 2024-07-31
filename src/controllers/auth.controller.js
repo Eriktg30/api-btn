@@ -128,6 +128,9 @@ export const profile = async (req, res) => {
             id: userFound._id,
             username: userFound.username,
             email: userFound.email,
+            phone: userFound.phone, 
+            phoneFamily: userFound.phoneFamily,
+            municipio: userFound.municipio,
         }
 
         return res.status(200).json(userData)
