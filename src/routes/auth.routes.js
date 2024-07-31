@@ -15,7 +15,7 @@ router.get('/verify', verifyToken)
 
 router.put('/profile/:id', updateProfile)
 
-router.get('/profile/:id',authRequired, profile)
+router.post('/profile/:id', profile)
 
 
 
