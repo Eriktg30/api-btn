@@ -22,11 +22,11 @@ const PoliciasSchema = mongoose.Schema({
         required: true
     },
     ulongitud: {
-        type: String,
+        type: Number,
         required: true
     },
     ulatitud: {
-        type: String,
+        type: Number,
         required: true
     },
 
