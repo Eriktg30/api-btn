@@ -30,11 +30,11 @@ export const getPolicia = async (req, res) => {
 }
 
 export const updatePolicia = async (req, res) => {
-    const { notificationToken } = req.body
+    const { notificationToken, EstadoPo } = req.body
 
     try {
         const policia = await Autoridades.findByIdAndUpdate(req.params.id,
-            { notificationToken},
+            { notificationToken, EstadoPo},
             { new: true }
         )
 
