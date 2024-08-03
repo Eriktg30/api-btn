@@ -21,6 +21,10 @@ const PoliciasSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    EstadoPo: {
+        type: String,
+        required: true
+    },
     ulongitud: {
         type: Number,
         required: true
