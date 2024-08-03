@@ -1,10 +1,7 @@
 import mongoose from 'mongoose';
-import admin from './admin.js';
-import Emergencia from './models/emergencias.model.js';
-import Policia from './models/autoridades.model.js';
 import dotenv from 'dotenv';
 import { notificaciones } from './notificaciones.js'
-
+import { asignar } from './asignar.js';
 
 dotenv.config();
 
@@ -22,6 +19,8 @@ export const connectDB = async () => {
         console.log('>>> DB is connected <<<');
 
         notificaciones()
+
+         asignar()
       
     } catch (error) {
         console.error('Error al conectar a la base de datos:', error);
