@@ -71,7 +71,28 @@ export const updateEmergencias = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ msg: 'Error interno del servidor', ulatitud, ulongitud })
     }
+}
 
+export const asignarEmergencia = async (alertaId, idPolicia) => {
+    const db = mongoose.connection.db;
+    // const { idPolicia } = req.body
+    try {
+        const emergencia = await db.collection('emergencias').findOneAndUpdate(
+            { _id: alertaId },
+            // { $set: {estado: '3'} },
+            { $set: { Policias: idPolicia, estado: '3' } },
+            { returnOriginal: false }
+        );
+
+        if (!emergencia) {
+            console.error('Emergencia no encontrada');
+        } else {
+            console.log('Emergencia actualizada', emergencia);
+        }
+
+    } catch (error) {
+        console.log('Error interno del servidor', error)
+    }
 }
 
 export const deleteAlerta = async (req, res) => {
