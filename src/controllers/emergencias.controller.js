@@ -1,6 +1,5 @@
-
-
 import Emergencia from "../models/emergencias.model.js";
+import mongoose from 'mongoose';
 
 
 export const getEmergencias = async (req, res) => {
