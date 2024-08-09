@@ -28,7 +28,7 @@ export const getEmergencia = async (req, res) => {
 }
 
 export const addEmergencias = async (req, res) => {
-    const { ulongitud, ulatitud, estado, tipo, user } = req.body
+    const { ulongitud, ulatitud, estado, tipo, user, municipio } = req.body
 
     try {
 
@@ -37,7 +37,8 @@ export const addEmergencias = async (req, res) => {
             ulatitud,
             estado,
             tipo,
-            user
+            user, 
+            municipio
         })
 
         const userSaved = await newEmergencia.save()
