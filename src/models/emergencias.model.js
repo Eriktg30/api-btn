@@ -21,6 +21,11 @@ const emergenciasSchema = mongoose.Schema({
         required: true,
         trim: true,
     },
+    municipio:{
+        type: String,
+        required: true,
+        trim: true,
+    }, 
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
