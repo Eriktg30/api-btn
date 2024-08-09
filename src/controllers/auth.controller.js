@@ -96,13 +96,9 @@ export const login = async (req, res) => {
 }
 
 export const updateProfile = async (req, res) => {
-    const { email, password, phone, phoneFamily, municipio } = req.body
+    const { password, phone, phoneFamily, municipio } = req.body
 
-    try {
-        const userFound = await User.findOne({ email })
-        if (userFound)
-            return res.status(400).json({ msg: 'El correo ya existe' })
-        
+    try { 
         const user = await User.findByIdAndUpdate(req.params.id,
             { email, password, phone, phoneFamily, municipio },
             { new: true }
