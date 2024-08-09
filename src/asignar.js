@@ -59,7 +59,7 @@ export const asignar = () => {
 
     const encontrarPoliciaMasCercana = async (alerta) => {
         try {
-            const policias = await db.collection('policias').find({ EstadoPo: 'Disponible', tipo: alerta.tipo }).toArray(); // Obtener todos los policías
+            const policias = await db.collection('policias').find({ EstadoPo: 'Disponible', tipo: alerta.tipo, municipio: alerta.municipio }).toArray(); // Obtener todos los policías
 
             if(policias.length === 0){
                 return
@@ -71,6 +71,7 @@ export const asignar = () => {
                 id: p._id,
                 estado: p.EstadoPo,
                 tipo: p.tipo
+                municipio: p.municipio
             }));
 
             // console.log(formatoPolicia);
