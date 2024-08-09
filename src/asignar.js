@@ -70,7 +70,7 @@ export const asignar = () => {
                 longitude: p.ulongitud,
                 id: p._id,
                 estado: p.EstadoPo,
-                tipo: p.tipo
+                tipo: p.tipo,
                 municipio: p.municipio
             }));
 
@@ -80,6 +80,9 @@ export const asignar = () => {
             return nearest
         } catch (error) {
             console.error('Error encontrando el policía más cercano:', error);
+            res.json({
+                msg: 'Registrado'
+            })
             return;
         }
     };
