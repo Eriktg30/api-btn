@@ -100,7 +100,7 @@ export const updateProfile = async (req, res) => {
 
     try { 
         const user = await User.findByIdAndUpdate(req.params.id,
-            { email, password, phone, phoneFamily, municipio },
+            { password, phone, phoneFamily, municipio },
             { new: true }
         )
         if (!user)
