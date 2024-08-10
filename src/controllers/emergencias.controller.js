@@ -46,8 +46,9 @@ export const addEmergencias = async (req, res) => {
             const userSaved = await newEmergencia.save()
     
             res.status(200).json({
-                userSaved,
-                id: userSaved._id
+                id: userSaved._id,
+                msg: 'La ayuda va en camino'
+
             })
         }else{
             return res.status(404).json({ msg: 'El sistema no tiene cobertura en tu zona' })
