@@ -1,6 +1,6 @@
 import Emergencia from "../models/emergencias.model.js";
 import mongoose from 'mongoose';
-
+import Municipios from "../models/municipios.model.js"
 
 export const getEmergencias = async (req, res) => {
     try {
@@ -31,22 +31,27 @@ export const addEmergencias = async (req, res) => {
     const { ulongitud, ulatitud, estado, tipo, user, municipio } = req.body
 
     try {
+        const existeMunicipio = await Municipios.findOne({ municipio: municipio })
 
-        const newEmergencia = new Emergencia({
+        if(existeMunicipio){
+            const newEmergencia = new Emergencia({
             ulongitud,
             ulatitud,
             estado,
             tipo,
             user, 
             municipio
-        })
+            })
 
-        const userSaved = await newEmergencia.save()
-
-        res.status(200).json({
-            userSaved,
-            id: userSaved._id
-        })
+            const userSaved = await newEmergencia.save()
+    
+            res.status(200).json({
+                userSaved,
+                id: userSaved._id
+            })
+        }else{
+            return res.status(404).json({ msg: 'El sistema no tiene cobertura en tu zona' })
+        }
 
     } catch (error) {
         console.log(error);
