@@ -41,12 +41,12 @@ export const verifyCode = async (req, res) => {
         )
 
         if (!userFound) 
-            return res.json({ msg: 'usuario no encontrado' })
+            return res.status(500).json({ msg: 'usuario no encontrado' })
 
         if(userFound.code === code && Date.now() < userFound.codigoExpiracion){
-            return res.json({msg: 'código valido'})
+            return res.status(200).json({msg: 'código valido'})
         }else {
-            return res.status(400).json({ msg: 'Código inválido o expirado' })
+            return res.status(400).json({ msg: 'Código inválido o expirado', email, code })
         }
         
     } catch (error) {
