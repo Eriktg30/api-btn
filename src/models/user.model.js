@@ -31,6 +31,15 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+    },
+    codigo: {
+        type: String,
+        required: false, 
+        trim: true,
+    },
+    codigoExpiracion: {
+        type: Date,
+        required: false, 
     }
 }, {
     timestamps: true,
