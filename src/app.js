@@ -7,6 +7,7 @@ import authRoutes from './routes/auth.routes.js'
 import emergenciasRoutes from './routes/emergencias.routes.js'
 import autoridadesRoutes from './routes/autoridades.routes.js'
 import notificationRoutes from './routes/notificaciones.routes.js'
+import emailRoutes from './routes/email.routes.js'
 
 const app = express()
 
@@ -24,5 +25,6 @@ app.use('/api', authRoutes)
 app.use('/api', emergenciasRoutes)
 app.use('/api', autoridadesRoutes)
 app.use('/api', notificationRoutes)
+app.use('/api', emailRoutes)
 
 export default app;
