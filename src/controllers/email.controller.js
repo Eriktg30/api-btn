@@ -25,7 +25,9 @@ export const sendCode = async (req, res) => {
 
         await sendResetCode(email, code)
 
-        return res.status(200).json({ msg: 'enviado', code })
+        const id = userFound._id
+
+        return res.status(200).json({ msg: 'Código enviado revice su bandeja', id })
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: 'Error al enviar el código' })
