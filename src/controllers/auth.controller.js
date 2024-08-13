@@ -11,7 +11,6 @@ export const register = async (req, res) => {
     const { email, password, username, phone, phoneFamily, municipio } = req.body
 
     try {
-
         const userFound = await User.findOne({ email })
 
         if (userFound)
@@ -99,8 +98,18 @@ export const updateProfile = async (req, res) => {
     const { password, phone, phoneFamily, municipio } = req.body
 
     try { 
-        const user = await User.findByIdAndUpdate(req.params.id,
-            { password, phone, phoneFamily, municipio },
+        const updateData = {};
+        
+        if (password) {
+            updateData.password = await bcrypt.hash(password, 10);
+        }
+        if (phone) updateData.phone = phone;
+        if (phoneFamily) updateData.phoneFamily = phoneFamily;
+        if (municipio) updateData.municipio = municipio;
+        
+        const user = await User.findByIdAndUpdate(
+            req.params.id,
+            updateData,
             { new: true }
         )
         if (!user)
