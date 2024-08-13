@@ -10,38 +10,15 @@ export function generarToken(length = 6) {
 
 export async function sendResetCode(email, code) {
     // const code = generarToken()
-    console.log(code);
-
-    const getTransporter = (email) => {
-      const domain = email.split('@')[1];
-    
-      let service;
-      switch (domain) {
-        case 'gmail.com':
-          service = 'gmail';
-          break;
-        case 'yahoo.com':
-          service = 'yahoo';
-          break;
-        case 'outlook.com':
-        case 'hotmail.com':
-          service = 'hotmail';
-          break;
-        default:
-          service = null;
-      }
+    // console.log(code);
 
     let transporter = nodemailer.createTransport({
-
-        service: service,
+        service: 'gmail',
         auth: {
             user: 'eriktg836@gmail.com',
             pass: 'xbzx llaz dyrv ebhx'
         }
     })
-
-    const email = 'your-email@gmail.com'; // Reemplaza con el correo del remitente
-    const transporter = getTransporter(email);
 
     let mailOptions = {
         from: 'eriktg836@gmail.com',
@@ -53,10 +30,8 @@ export async function sendResetCode(email, code) {
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             return console.log('Error correo: ', error);
-
         }
         console.log('Correo enviado: ' + info.response);
 
     })
-
 }
