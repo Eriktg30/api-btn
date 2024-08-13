@@ -22,12 +22,9 @@ export const sendCode = async (req, res) => {
         if (!userFound)
             return res.status(404).json({ msg: 'Usuario no encontrado' })
 
-
         await sendResetCode(email, code)
 
-        const id = userFound._id
-
-        return res.status(200).json({ msg: 'Código enviado revice su bandeja', id })
+        return res.status(200).json({ msg: '¡Código enviado! Por favor, revisa tu bandeja de entrada.' })
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: 'Error al enviar el código' })
@@ -45,8 +42,10 @@ export const verifyCode = async (req, res) => {
         if (!userFound) 
             return res.status(500).json({ success: false, msg: 'usuario no encontrado' })
 
+        const id = userFound._id
+
         if(userFound.codigo === code && Date.now() < userFound.codigoExpiracion){
-            return res.status(200).json({ success: true, msg: 'código valido'})
+            return res.status(200).json({ success: true, msg: 'código valido', id})
         }else {
             return res.status(400).json({ success: false, msg: 'Código inválido o expirado' })
         }
