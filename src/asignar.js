@@ -74,7 +74,7 @@ export const asignar = () => {
                 municipio: p.municipio
             }));
 
-            // console.log(formatoPolicia);
+            console.log(formatoPolicia.municipio);
 
             const nearest = geolib.findNearest(alerta, formatoPolicia)
             return nearest
