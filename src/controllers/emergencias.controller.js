@@ -41,8 +41,7 @@ export const addEmergencias = async (req, res) => {
             ulatitud,
             estado,
             tipo,
-            user, 
-            municipio: nuevoMunicipio
+            user
             })
 
             const userSaved = await newEmergencia.save()
