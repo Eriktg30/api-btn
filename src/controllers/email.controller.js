@@ -20,7 +20,7 @@ export const sendCode = async (req, res) => {
         )
 
         if (!userFound)
-            return res.status(404).json({ msg: 'Usuario no encontrado' })
+            return res.status(404).json({ msg: 'El correo no esta registrado' })
 
         await sendResetCode(email, code)
 
