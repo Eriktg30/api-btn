@@ -51,7 +51,7 @@ export const addEmergencias = async (req, res) => {
 
             })
         }else{
-            return res.status(404).json({ msg: 'El sistema no tiene cobertura en tu zona' })
+            return res.status(404).json({ msg: 'El sistema no tiene cobertura en tu zona', municipio })
         }
 
     } catch (error) {
