@@ -31,7 +31,7 @@ export const addEmergencias = async (req, res) => {
     const { ulongitud, ulatitud, estado, tipo, user, municipio } = req.body
 
     try {
-        const existeMunicipio = await Municipios.findOne({ municipio:  { $in: municipio } })
+        const existeMunicipio = await Municipios.find({ municipio:  { $in: municipio } })
 
         if(existeMunicipio){
             const nuevoMunicipio = existeMunicipio.municipio;
