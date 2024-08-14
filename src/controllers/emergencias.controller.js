@@ -40,7 +40,7 @@ export const addEmergencias = async (req, res) => {
             estado,
             tipo,
             user, 
-            municipio
+            existeMunicipio.municipio
             })
 
             const userSaved = await newEmergencia.save()
