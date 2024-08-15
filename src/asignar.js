@@ -32,7 +32,7 @@ export const asignar = () => {
 
                 // Encuentra el policía más cercano
                 const nearestPoli = await encontrarPoliciaMasCercana(infoAlerta);
-                // console.log('Policía más cercano:', nearestPoli);
+                console.log('Policía más cercano:', nearestPoli);
 
                 if (!nearestPoli) {
                     console.log('No se encontró policía cercano.');
