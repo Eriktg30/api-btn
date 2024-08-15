@@ -25,7 +25,8 @@ export const asignar = () => {
                 const infoAlerta = {
                     latitude: fullDocument.ulatitud,
                     longitude: fullDocument.ulongitud,
-                    tipo: fullDocument.tipo
+                    tipo: fullDocument.tipo,
+                    municipio: fullDocument.municipio
                 };
 
                 // console.log('info alerta:', infoAlerta);
