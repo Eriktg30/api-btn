@@ -28,8 +28,7 @@ export const notificaciones = () => {
                 token: tokenM,
                 notification: {
                     title: 'Nueva Emergencia Asignada',
-                    body: `Se te ha asignado una nueva emergencia atiendela.`,
-                    icon: '/ct.png',
+                    body: `Se te ha asignado una nueva emergencia atiendela.`
                 },
             };
 
