@@ -13,7 +13,7 @@ const app = express()
 
 app.use(cors({
     // origin: 'http://localhost:8100',
-    origin: 'https://localhost',
+    origin: ['http://localhost', 'https://localhost', 'http://localhost:8100'],
     credentials: true,
 }))
 
