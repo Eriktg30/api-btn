@@ -128,7 +128,7 @@ export const updateEstado = async (req, res) => {
         return res.status(200).json({ msg: 'Gracias por confirmar', emergencia })
 
     } catch (error) {
-        return res.status(500).json({ msg: 'Error interno del servidor', ulatitud, ulongitud })
+        return res.status(500).json({ msg: 'Error interno del servidor', estado })
     }
 
 }
