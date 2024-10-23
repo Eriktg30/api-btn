@@ -18,7 +18,7 @@ export const getEmergencias = async (req, res) => {
 
 export const getEmergencia = async (req, res) => {
     try {
-        const emergencia = await Emergencia.findById(req.params.id)
+        const emergencia = await Emergencia.findById(req.params.id).populate('user')
         if (!emergencia) return res.status(404).json({ msg: 'Emergencia no encontrada' })
         res.json(emergencia)
 
