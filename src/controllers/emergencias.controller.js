@@ -47,6 +47,8 @@ export const addEmergencias = async (req, res) => {
     
             res.status(200).json({
                 id: userSaved._id,
+                newEmergencia,
+                userSaved,
                 msg: 'La ayuda va en camino'
 
             })
