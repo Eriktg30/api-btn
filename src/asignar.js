@@ -11,11 +11,9 @@ export const asignar = () => {
 
     changeStream.on('change', async (change) => {
         try {
-            // Verifica si la operación es una inserción
             if (change.operationType === 'insert') {
                 const fullDocument = change.fullDocument;
 
-                // Verifica el estado de la emergencia
                 if (fullDocument.estado === '3') {
                     console.log(`Emergencia ${fullDocument._id} ya está asignada.`);
                     return;
