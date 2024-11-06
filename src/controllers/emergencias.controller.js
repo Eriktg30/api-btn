@@ -88,7 +88,7 @@ export const asignarEmergencia = async (alertaId, idPolicia) => {
         const emergencia = await db.collection('emergencias').findOneAndUpdate(
             { _id: alertaId },
             // { $set: {estado: '3'} },
-            { $set: { Policias: idPolicia, estado: '3' } },
+            { $set: { Policias: idPolicia, estado: '2' } },
             { returnOriginal: false }
         );
 
