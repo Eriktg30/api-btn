@@ -35,9 +35,8 @@ export const register = async (req, res) => {
         })
 
         const userSaved = await newUser.save()
-        const token = await createAccessToken({ id: userSaved._id })
-
-         await sendResetCode(email, code)
+        
+         // await sendResetCode(email, code)
 
         res.cookie("token", token, {
             httpOnly: true,
@@ -53,7 +52,7 @@ export const register = async (req, res) => {
             cratedAt: userSaved.cratedAt,
             updatedAt: userSaved.updatedAt,
             msg: 'Registrado',
-            authToken: token
+            // authToken: token
         })
 
     } catch (error) {
