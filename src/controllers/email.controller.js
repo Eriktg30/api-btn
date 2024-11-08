@@ -1,7 +1,7 @@
 // import User from '../models/user.model'
 import { sendResetCode, generarToken } from '../email.js'
 import User from "../models/user.model.js";
-
+import { createAccessToken } from "../libs/jwt.js";
 
 export const sendCode = async (req, res) => {
     const { email } = req.body
