@@ -45,7 +45,7 @@ export const verifyCode = async (req, res) => {
         const id = userFound._id
 
         if(userFound.codigo === code && Date.now() < userFound.codigoExpiracion){
-            return res.status(200).json({ success: true, msg: 'código valido', id})
+            return res.status(200).json({ success: true, msg: 'código valido', id, userFound})
         }else {
             return res.status(400).json({ success: false, msg: 'Código inválido o expirado' })
         }
