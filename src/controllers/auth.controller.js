@@ -24,7 +24,8 @@ export const register = async (req, res) => {
             username,
             phone, 
             phoneFamily,
-            municipio
+            municipio,
+            validated: false
         })
 
         const userSaved = await newUser.save()
