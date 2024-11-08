@@ -5,6 +5,7 @@ import User from "../models/user.model.js";
 import Policia from "../models/autoridades.model.js"
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { sendResetCode, generarToken } from '../email.js'
 
 export const register = async (req, res) => {
 
@@ -36,8 +37,7 @@ export const register = async (req, res) => {
         const userSaved = await newUser.save()
         const token = await createAccessToken({ id: userSaved._id })
 
-
-        // res.cookie('token', token)
+         await sendResetCode(email, code)
 
         res.cookie("token", token, {
             httpOnly: true,
@@ -45,9 +45,7 @@ export const register = async (req, res) => {
             sameSite: 'none',
             path: '/'
         });
-
-        // res.cookie('user', username)
-
+        
         res.json({
             id: userSaved._id,
             username: userSaved.username,
@@ -59,7 +57,7 @@ export const register = async (req, res) => {
         })
 
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ msg: 'Error Register' })
     }
 }
 
