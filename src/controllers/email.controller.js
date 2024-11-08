@@ -39,7 +39,6 @@ export const verifyCode = async (req, res) => {
             { email: email }
         )
 
-
         if (!userFound) 
             return res.status(500).json({ success: false, msg: 'usuario no encontrado' })
 
