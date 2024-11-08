@@ -42,7 +42,7 @@ const userSchema = mongoose.Schema({
         required: false, 
     },
     validated: {
-        type: Boolean
+        type: Boolean,
         required: false
     }
 }, {
