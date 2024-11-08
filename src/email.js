@@ -35,3 +35,31 @@ export async function sendResetCode(email, code) {
 
     })
 }
+
+export async function sendResetCodeCorreo(email, code) {
+    // const code = generarToken()
+    // console.log(code);
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'eriktg836@gmail.com',
+            pass: 'xbzx llaz dyrv ebhx'
+        }
+    })
+
+    let mailOptions = {
+        from: 'eriktg836@gmail.com',
+        to: email,
+        subject: 'Código de validación de correo',
+        text: `Tu código es: ${code}. úsalo para cambiar la contraseña`
+    }
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log('Error correo: ', error);
+        }
+        console.log('Correo enviado: ' + info.response);
+
+    })
+}
