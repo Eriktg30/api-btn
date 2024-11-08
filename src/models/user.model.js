@@ -40,6 +40,10 @@ const userSchema = mongoose.Schema({
     codigoExpiracion: {
         type: Date,
         required: false, 
+    },
+    validated: {
+        type: Boolean
+        required: false
     }
 }, {
     timestamps: true,
