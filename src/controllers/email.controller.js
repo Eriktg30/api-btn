@@ -39,13 +39,15 @@ export const verifyCode = async (req, res) => {
             { email: email }
         )
 
+
         if (!userFound) 
             return res.status(500).json({ success: false, msg: 'usuario no encontrado' })
 
+        const token = await createAccessToken({ id: userFound._id })
         const id = userFound._id
 
         if(userFound.codigo === code && Date.now() < userFound.codigoExpiracion){
-            return res.status(200).json({ success: true, msg: 'código valido', id, userFound})
+            return res.status(200).json({ success: true, msg: 'código valido', id, authToken: token})
         }else {
             return res.status(400).json({ success: false, msg: 'Código inválido o expirado' })
         }
