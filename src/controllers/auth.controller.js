@@ -18,6 +18,9 @@ export const register = async (req, res) => {
 
         const passwordHash = await bcrypt.hash(password, 10)
 
+        const code = generarToken()
+        const expirationTime = Date.now() + 15 * 60 * 1000
+
         const newUser = new User({
             email,
             password: passwordHash,
@@ -25,7 +28,9 @@ export const register = async (req, res) => {
             phone, 
             phoneFamily,
             municipio,
-            validated: false
+            validated: false,
+            codigo: code,
+            codigoExpiracion: expirationTime
         })
 
         const userSaved = await newUser.save()
