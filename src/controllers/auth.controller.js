@@ -17,10 +17,10 @@ export const register = async (req, res) => {
         if (userFound)
             return res.status(400).json({ msg: 'El correo ya existe' })
 
+        const code = generarToken()
+        const expirationTime = Date.now() + 15 * 60 * 1000
         const passwordHash = await bcrypt.hash(password, 10)
 
-        // const code = generarToken()
-        // const expirationTime = Date.now() + 15 * 60 * 1000
 
         const newUser = new User({
             email,
@@ -30,13 +30,13 @@ export const register = async (req, res) => {
             phoneFamily,
             municipio,
             validated: false,
-            // codigo: code,
-            // codigoExpiracion: expirationTime
+            codigo: code,
+            codigoExpiracion: expirationTime
         })
 
         const userSaved = await newUser.save()
         
-        // await sendResetCodeCorreo(email, code)
+        await sendResetCodeCorreo(email, code)
 
         // res.cookie("token", token, {
         //     httpOnly: true,
@@ -55,7 +55,7 @@ export const register = async (req, res) => {
         })
 
     } catch (error) {
-        res.status(500).json({ msg: 'Error Register' }, error)
+        res.status(500).json({ msg: 'Error Register', error })
     }
 }
 
