@@ -101,7 +101,7 @@ export const login = async (req, res) => {
 }
 
 export const updateProfile = async (req, res) => {
-    const { password, phone, phoneFamily, municipio } = req.body
+    const { password, phone, phoneFamily, municipio, validated } = req.body
 
     try { 
         const updateData = {};
@@ -112,6 +112,7 @@ export const updateProfile = async (req, res) => {
         if (phone) updateData.phone = phone;
         if (phoneFamily) updateData.phoneFamily = phoneFamily;
         if (municipio) updateData.municipio = municipio;
+        if(validated) updateData.validated = validated;
         
         const user = await User.findByIdAndUpdate(
             req.params.id,
