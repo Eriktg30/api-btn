@@ -19,8 +19,8 @@ export const register = async (req, res) => {
 
         const passwordHash = await bcrypt.hash(password, 10)
 
-        const code = generarToken()
-        const expirationTime = Date.now() + 15 * 60 * 1000
+        // const code = generarToken()
+        // const expirationTime = Date.now() + 15 * 60 * 1000
 
         const newUser = new User({
             email,
@@ -30,20 +30,20 @@ export const register = async (req, res) => {
             phoneFamily,
             municipio,
             validated: false,
-            codigo: code,
-            codigoExpiracion: expirationTime
+            // codigo: code,
+            // codigoExpiracion: expirationTime
         })
 
         const userSaved = await newUser.save()
         
-        await sendResetCodeCorreo(email, code)
+        // await sendResetCodeCorreo(email, code)
 
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-            path: '/'
-        });
+        // res.cookie("token", token, {
+        //     httpOnly: true,
+        //     secure: true,
+        //     sameSite: 'none',
+        //     path: '/'
+        // });
         
         res.json({
             id: userSaved._id,
