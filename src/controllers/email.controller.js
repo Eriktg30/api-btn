@@ -1,5 +1,5 @@
 // import User from '../models/user.model'
-import { sendResetCode, generarToken } from '../email.js'
+import { sendResetCode, generarToken, sendResetCodeCorreo } from '../email.js'
 import User from "../models/user.model.js";
 
 
@@ -50,7 +50,7 @@ export const sendCodeCorreo = async (req, res) => {
         if (!userFound)
             return res.status(404).json({ msg: 'El correo no esta registrado' })
 
-        await sendResetCode(email, code)
+        await sendResetCodeCorreo(email, code)
 
         return res.status(200).json({ msg: '¡Código enviado! Por favor, revisa tu bandeja de entrada.' })
     } catch (error) {
