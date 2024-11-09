@@ -67,6 +67,7 @@ export const login = async (req, res) => {
 
         const code = generarToken()
         const expirationTime = Date.now() + 15 * 60 * 1000
+        
         const userFound = await User.findOneAndUpdate(
             { email }, 
             { $set: {codigo: code, codigoExpiracion: expirationTime} },
@@ -104,7 +105,8 @@ export const login = async (req, res) => {
         })
 
     } catch (error) {
-        res.status(500).json({ msg: 'Error login', error })
+        const id = userFound ? userFound._id : null;
+        res.status(500).json({ msg: 'Error login', error, id})
     }
 }
 
