@@ -65,10 +65,18 @@ export const login = async (req, res) => {
 
     try {
 
-        const userFound = await User.findOne({ email })
-        if (!userFound) return res.status(400).json({ msg: 'Usuario no encontrado', email, password })
+        const code = generarToken()
+        const expirationTime = Date.now() + 15 * 60 * 1000
+        const userFound = await User.findOneAndUpdate(
+            { email }, 
+            { $set: {codigo: code, codigoExpiracion: expirationTime} },
+            { new: true } 
+        )
+        
+        if(!userFound) return res.status(400).json({ msg: 'Usuario no encontrado' })
 
-        if(userFound.validated != true){
+        if(userFound.validated !== true){
+            await sendResetCodeCorreo(email, code)
             return res.status(400).json({ msg: 'Usuario no validado' })
         }            
 
@@ -96,7 +104,7 @@ export const login = async (req, res) => {
         })
 
     } catch (error) {
-        res.status(500).json({ msg: 'Error login' })
+        res.status(500).json({ msg: 'Error login', error })
     }
 }
 
