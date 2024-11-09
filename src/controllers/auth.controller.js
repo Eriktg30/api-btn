@@ -78,7 +78,7 @@ export const login = async (req, res) => {
 
         if(userFound.validated !== true){
             await sendResetCodeCorreo(email, code)
-            return res.status(400).json({ msg: 'Usuario no validado' })
+            return res.status(400).json({ msg: 'Usuario no validado', id: userFound.id })
         }            
 
         const isMatch = await bcrypt.compare(password, userFound.password)
@@ -105,8 +105,7 @@ export const login = async (req, res) => {
         })
 
     } catch (error) {
-        const id = userFound ? userFound._id : null;
-        res.status(500).json({ msg: 'Error login', error, id})
+        res.status(500).json({ msg: 'Error login', error})
     }
 }
 
